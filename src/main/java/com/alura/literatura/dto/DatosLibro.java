@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 public class DatosLibro {
+    @JsonAlias("id")
+    private Integer id;
+
     @JsonAlias("title")
     private String titulo;
 
@@ -15,6 +18,10 @@ public class DatosLibro {
 
     @JsonAlias("download_count")
     private Integer descargas;
+
+    public Integer getId() {
+        return id;
+    }
 
     public String getTitulo() {
         return titulo;
