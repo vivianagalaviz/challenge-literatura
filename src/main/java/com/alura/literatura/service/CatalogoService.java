@@ -80,4 +80,15 @@ public class CatalogoService {
     public List<Autor> listarAutores() {
         return autorRepository.findAll();
     }
+    public List<Autor> listarAutoresVivosEnAnio(Integer anio) {
+
+        List<Autor> autores = autorRepository
+                .findByNacimientoLessThanEqualAndFallecimientoGreaterThanEqual(anio, anio);
+
+        autores.addAll(
+                autorRepository.findByNacimientoLessThanEqualAndFallecimientoIsNull(anio)
+        );
+
+        return autores;
+    }
 }

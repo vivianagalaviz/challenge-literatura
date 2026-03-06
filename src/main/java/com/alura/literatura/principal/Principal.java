@@ -27,6 +27,7 @@ public class Principal {
                     1 - Buscar y registrar libro por título
                     2 - Listar libros registrados
                     3 - Listar autores registrados
+                    4 - Listar autores vivos en un año
                     0 - Salir
                     """);
 
@@ -43,12 +44,34 @@ public class Principal {
                 case 1 -> registrarLibroPorTitulo();
                 case 2 -> listarLibrosRegistrados();
                 case 3 -> listarAutoresRegistrados();
+                case 4 -> listarAutoresVivosEnAnio();
                 case 0 -> System.out.println("Saliendo...");
                 default -> System.out.println("Opción inválida.");
             }
         }
     }
 
+    private void listarAutoresVivosEnAnio() {
+        System.out.println("Escribe el año para consultar autores vivos:");
+        String entrada = teclado.nextLine();
+        try {
+            int anio = Integer.parseInt(entrada);
+
+            var autores = catalogoService.listarAutoresVivosEnAnio(anio);
+
+            if (autores.isEmpty()) {
+                System.out.println("No se encontraron autores vivos en ese año.");
+                return;
+            }
+
+            System.out.println("----- AUTORES VIVOS EN " + anio + " -----");
+            autores.forEach(System.out::println);
+            System.out.println("-----------------------------------------");
+
+        } catch (NumberFormatException e) {
+            System.out.println("Debes ingresar un número válido.");
+        }
+    }
 
     private void registrarLibroPorTitulo() {
         System.out.println("Escribe el título del libro a buscar:");
