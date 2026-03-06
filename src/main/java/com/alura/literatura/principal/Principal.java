@@ -1,9 +1,7 @@
 package com.alura.literatura.principal;
-
 import com.alura.literatura.model.Libro;
 import com.alura.literatura.service.CatalogoService;
 import org.springframework.stereotype.Component;
-
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -67,9 +65,9 @@ public class Principal {
                 return;
             }
 
-            System.out.println("----- AUTORES VIVOS EN " + anio + " -----");
+            System.out.println("**** AUTORES VIVOS EN " + anio + " ****");
             autores.forEach(System.out::println);
-            System.out.println("-----------------------------------------");
+            System.out.println("*******************************************");
 
         } catch (NumberFormatException e) {
             System.out.println("Debes ingresar un número válido.");
@@ -104,9 +102,9 @@ public class Principal {
             return;
         }
 
-        System.out.println("----- LIBROS REGISTRADOS -----");
+        System.out.println("**** LIBROS REGISTRADOS ****");
         libros.forEach(System.out::println);
-        System.out.println("------------------------------");
+        System.out.println("***********************");
     }
     private void listarAutoresRegistrados() {
         var autores = catalogoService.listarAutores();
@@ -116,7 +114,7 @@ public class Principal {
         }
         System.out.println("----- AUTORES REGISTRADOS -----");
         autores.forEach(System.out::println);
-        System.out.println("------------------------------");
+        System.out.println("***********************");
     }
     private void listarLibrosPorIdioma() {
 
@@ -147,8 +145,8 @@ public class Principal {
             return;
         }
 
-        System.out.println("----- LIBROS EN " + idioma + " -----");
+        System.out.println("**** LIBROS EN " + idioma + " ****");
         libros.forEach(System.out::println);
-        System.out.println("------------------------------");
+        System.out.println("***********************");
     }
 }

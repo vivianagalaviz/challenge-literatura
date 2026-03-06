@@ -41,12 +41,10 @@ public class CatalogoService {
 
         DatosLibro datosLibro = respuesta.getResults().get(0);
 
-        // Evitar duplicado por Gutenberg ID
         if (datosLibro.getId() != null && libroRepository.findByGutenbergId(datosLibro.getId()).isPresent()) {
             return libroRepository.findByGutenbergId(datosLibro.getId());
         }
 
-        // Autor (tomamos el primero)
         DatosAutor datosAutor = (datosLibro.getAutores() != null && !datosLibro.getAutores().isEmpty())
                 ? datosLibro.getAutores().get(0)
                 : null;
@@ -59,7 +57,6 @@ public class CatalogoService {
                     ));
         }
 
-        // Idioma (tomamos el primero)
         String idioma = (datosLibro.getIdiomas() != null && !datosLibro.getIdiomas().isEmpty())
                 ? datosLibro.getIdiomas().get(0)
                 : null;
