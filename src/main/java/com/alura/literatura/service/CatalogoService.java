@@ -91,4 +91,7 @@ public class CatalogoService {
 
         return autores;
     }
+    public List<Libro> listarLibrosPorIdioma(String idioma) {
+        return libroRepository.findByIdiomaIgnoreCase(idioma);
+    }
 }
